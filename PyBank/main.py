@@ -37,11 +37,35 @@ with open(csvpath, newline = "") as csvfile:
     month_decrease = net_change.index(min(net_change)) + 1
 
 # print the results to the screen
-    print("Financial Analysis")
-    print("--------------------")
+    print(f"Financial Analysis")
+    print(f"--------------------")
     print(f"Total Months:{len(total_months)}")
     print(f"Total: ${sum(net_total_amount)}")
     print(f"Average Change: {round(sum(net_change)/len(net_change),2)}")
     print(f"Greatest Increase in Profit: {total_months[month_increase]} (${(str(greatest_increase))})")
     print(f"Greatest Decrease in Profit: {total_months[month_decrease]} (${(str(greatest_decrease))})")
+
+    #create file output
+    output = os.path.join("Analysis/pybankanalsys.txt")
+    with open(output,"w") as new:
+        new.write(f"Financial analysis")
+        new.write("\n")
+        new.write(f"--------------------")
+        new.write("\n")
+        new.write(f"Total Months:{len(total_months)}")
+        new.write("\n")
+        new.write(f"Total: ${sum(net_total_amount)}")
+        new.write("\n")
+        new.write(f"Average Change: {round(sum(net_change)/len(net_change),2)}")
+        new.write("\n")
+        new.write(f"Greatest Increase in Profit: {total_months[month_increase]} (${(str(greatest_increase))})")
+        new.write("\n")
+        new.write(f"Greatest Decrease in Profit: {total_months[month_decrease]} (${(str(greatest_decrease))})")
+        new.write("\n")
+    
+
+
+
+    
+
 
